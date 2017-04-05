@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="small-9 columns"></div>
+  <div class="small-3 columns">
+    <button (click)="changeState('add')" class="dropdown button slide-right"> <i class="step fi-plus size-16"></i> Add User</button>
+  </div>
+</div> <!----row---->
+
+
+<div *ngIf="appState== 'add'" class="row">
+  <div class="large-12 columns">
+    <h3>Add User</h3>
+    <form (submit)="addUser(
+      role.value,
+      name.value,
+      surname.value,
+      email.value,
+      phone.value,
+      street.value,
+      city.value,
+      country.value,
+      details.value,
+      postcode.value )" >
+      
+      <div class="row"> <!--row:  role, name, surname-->
+        <div class="medium-4 columns">
+          <label>Role
+            <select #role>
+              <option value="0">Select</option>
+              <option *ngFor="let item of myroles"  value="{{ item.role }}">{{ item.role }}</option>
+            </select>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+          <label>Name
+            <input type="text" placeholder="Name" #name>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+           <label>Surname
+            <input type="text" placeholder="Surname" #surname>
+          </label>
+        </div>
+      </div>   <!----enf of row---->
+
+      <div class="row"><!--row: email, phone, details-->
+        <div class="medium-4 columns">
+           <label>Email
+            <input type="text" placeholder="Email" #email>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+           <label>Phone
+            <input type="text" placeholder="Phone" #phone>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+           <label>Details
+            <textarea placeholder="Some details"  #details></textarea>
+          </label>
+        </div>
+      </div>    <!----end of row---->
+       
+      <div class="row"> <!--row: street, city, country, postcode-->
+        <div class="medium-4 columns">
+           <label>Street
+            <input type="text" placeholder="Street Address" #street>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+           <label>City
+            <input type="text" placeholder="City" #city>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+           <label>Country
+            <input type="text" placeholder="Country" #country>
+          </label>
+        </div>
+        <div class="medium-3 columns">
+           <label>Postcode
+            <input type="text" placeholder="Postcode" #postcode>
+          </label>
+        </div>
+      </div> <!----end of row---->
+      <div class="row">
+        <div class="button-group">
+          <input class="button success" type="submit"  value="Submit Form">
+          <button (click)="changeState('default')" class="button alert">Cancel Form</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

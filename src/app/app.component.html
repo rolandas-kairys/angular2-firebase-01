@@ -1,3 +1,160 @@
-<h1>
-  {{title}}
-</h1>
+
+<app-navbar></app-navbar>
+ <!-----------------------------------------------add user--------------------- -->
+
+<app-adduser></app-adduser>
+
+
+<!----------------------------------------------edit user -------------------------->
+
+<div *ngIf="appState== 'edit'" class="row">
+  <div class="large-12 columns">
+    <h3>Edit User</h3>
+    <form (submit)="updateUser()" >
+      
+      <div class="row"> <!--row:  role, name, surname-->
+        <div class="medium-4 columns">
+          <label>Role
+            <select [(ngModel)]="activeRole" name="activeRole" #role>
+              <option value="0">Select</option>
+              <option *ngFor="let item of roles"  value="{{ item.role }}">{{ item.role }}</option>
+            </select>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+          <label>Name
+            <input type="text" [(ngModel)]="activeName" name="activeName" placeholder="Name" #name>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+           <label>Surname
+            <input type="text" [(ngModel)]="activeSurname" name="activeSurname" placeholder="Surname" #surname>
+          </label>
+        </div>
+      </div>   <!----enf of row---->
+
+      <div class="row"><!--row: email, phone, details-->
+        <div class="medium-4 columns">
+           <label>Email
+            <input type="text" [(ngModel)]="activeEmail" name="activeEmail" placeholder="Email" #email>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+           <label>Phone
+            <input type="text" [(ngModel)]="activePhone" name="activePhone" placeholder="Phone" #phone>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+           <label>Details
+            <textarea placeholder="Some details" [(ngModel)]="activeDetails" name="activeDetails"  #details></textarea>
+          </label>
+        </div>
+      </div>    <!----end of row---->
+       
+      <div class="row"> <!--row: street, city, country, postcode-->
+        <div class="medium-4 columns">
+           <label>Street
+            <input type="text" [(ngModel)]="activeStreet" name="activeStreet" placeholder="Street Address" #street>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+           <label>City
+            <input type="text" [(ngModel)]="activeCity" name="activeCity" placeholder="City" #city>
+          </label>
+        </div>
+        <div class="medium-4 columns">
+           <label>Country
+            <input type="text" [(ngModel)]="activeCountry" name="activeCountry" placeholder="Country" #country>
+          </label>
+        </div>
+        <div class="medium-3 columns">
+           <label>Postcode
+            <input type="text" [(ngModel)]="activePostcode" name="activePostcode" placeholder="Postcode" #postcode>
+          </label>
+        </div>
+      </div> <!----end of row---->
+      <div class="row">
+        <div class="button-group">
+          <input class="button success" type="submit"  value="Submit Form">
+          <button (click)="changeState('default')" class="button alert">Cancel Form</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!----------------------------------------------filter role -------------------------------- -->
+<!--<div class="row">
+  <div class="large-6 columns">
+    <button class="button">Add User</button>
+  </div>
+  <div class="large-6 columns">
+    <label for="">Filter Roles
+      <select (change)="filterRole(filteredRole.value)" #filteredRole >
+        <option value="0">Select</option>
+        <option value="item.role" *ngFor="let item of roles" > {{ item.role }} </option>
+      </select>
+    </label>
+
+  </div>
+</div>-->
+<!-- --------------------------------------- more window ---------------------------------- -->
+<div *ngIf="appState == 'extend'">
+  <div class="row">
+    <div class="large-12 columns">
+      <button (click)="changeState('default')" class="hollow button alert">Go Back</button>
+    </div>
+  </div>  <!--row-->
+
+  <div *ngFor="let user of users"  >
+    <div *ngIf="user.$key == activeKey">
+      <div class="row">
+        <div class="large-5 columns large-offset-1">
+          <h3> {{ user.name }} {{ user.surname }} </h3>
+          <h5> {{ user.role }}</h5>
+          <p>Details: {{ user.details }} </p>
+        </div>
+        <div class="large-5 columns large-offset-1">
+          <h4>Contact Info</h4>
+          <ul>
+            <li>Phone: {{ user.phone }} </li>
+            <li>Email: {{ user.email }} </li>
+            <li>Located: {{ user.city }}, {{ user.country }} </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>  <!--ngFor-->
+</div><!--appState == extend-->
+ 
+ <!-- -------------------------------main table------------------------------------ -->
+ <div class="row">
+   <div class="large-12 columns">
+    <div *ngIf="users">
+      <table>
+        <thead>
+        <tr>
+          <th>Role</th>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Administrate</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users" >
+            <td> {{ user.role }} </td>
+            <td> {{ user.name }} </td>
+            <td> {{ user.surname }} </td>
+            <td>
+              <button (click)="changeState('extend', user.$key)" class="hollow button">More</button>
+              <button (click)="showEdit(user)" class="hollow button secondary">Edit</button>
+              <button (click)="deleteUser(user.$key)" class="hollow button alert">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+   </div>
+ </div>
+

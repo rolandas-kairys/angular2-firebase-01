@@ -1,0 +1,63 @@
+[ 
+{
+  "role" : "Developer",
+  "name" : "Vardenis",
+  "surname": "Pavardenis",
+  "email" : "lkj@hola.cz",
+  "phone" : "0044-77809-990",
+  "street" : "Ulonu g. 5",
+  "city" : "Vilnius",
+  "country": "Lithuania",
+  "details" : "Incognito omnis erata",
+  "postcode" : "04567"
+},
+{
+  "role" : "Designer",
+  "name" : "Vardenis",
+  "surname": "Pavardenis",
+  "email" : "lkj@hola.cz",
+  "phone" : "0044-77809-990",
+  "street" : "Europos pr. 7",
+  "city" : "Vilnius",
+  "country": "Lithuania",
+  "details" : "Incognito omnis erata",
+  "postcode" : "89863"
+},
+{
+  "role" : "Senior Developer",
+  "name" : "Vardenis",
+  "surname": "Pavardenis",
+  "email" : "lkj@hola.cz",
+  "phone" : "0044-77809-990",
+  "street" : "Laisves pr. 245",
+  "city" : "Vilnius",
+  "country": "Lithuania",
+  "details" : "Incognito omnis erata",
+  "postcode" : "89863"
+},
+{
+  "role" : "Project Manager",
+  "name" : "Vardenis",
+  "surname": "Pavardenis",
+  "email" : "lkj@hola.cz",
+  "phone" : "0044-77809-990",
+  "street" : "Grybo g. 32",
+  "city" : "Vilnius",
+  "country": "Lithuania",
+  "details" : "Incognito omnis erata",
+  "postcode" : "89863"
+},
+{
+  "role" : "HR",
+  "name" : "Vardenis",
+  "surname": "Pavardenis",
+  "email" : "lkj@hola.cz",
+  "phone" : "0044-77809-990",
+  "street" : "Kauno g. 32",
+  "city" : "Vilnius",
+  "country": "Lithuania",
+  "details" : "Incognito omnis erata",
+  "postcode" : "89863"
+}
+
+]
