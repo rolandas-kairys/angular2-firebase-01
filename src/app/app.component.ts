@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   appState:string;
   activeKey: string;
 
-  activeRole:string; activeName:string; activeSurname:string; activeDetails:string; activeStreet:string; activeCity:string; activeCountry:string; activePostcode:string; activeEmail:string; activePhone:string;
+   activeRole:string; activeName:string; activeSurname:string; activeDetails:string; activeStreet:string; activeCity:string; activeCountry:string; activePostcode:string; activeEmail:string; activePhone:string;
 
   
   constructor(private _firebaseService: FirebaseService) { 
@@ -40,34 +40,6 @@ export class AppComponent implements OnInit {
      this.appState = state;
    } // changeState
 
-  //  addUser(
-  //    role:string,
-  //     name:string,
-  //     surname:string,
-  //     email:string,
-  //     phone:string,
-  //     street:string,
-  //     city:string,
-  //     country:string,
-  //     details:string,
-  //     postcode:string){
-
-  //       var newUser = {
-  //         role:role,
-  //         name:name,
-  //         surname:surname,
-  //         email:email,
-  //         phone:phone,
-  //         street:street,
-  //         city:city,
-  //         country:country,
-  //         details:details,
-  //         postcode:postcode }
-
-          
-  //         this._firebaseService.addUser(newUser);
-  //         this.changeState('default','');
-  //  }
 
    showEdit(user){
      this.changeState('edit', user.$key);

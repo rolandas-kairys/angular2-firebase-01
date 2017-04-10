@@ -4,6 +4,7 @@ export interface UserType{
     city?: string;
     country?: string;
     description?: string;
+    details?:string;
     email?: string;
     name?: string;
     phone?: string;

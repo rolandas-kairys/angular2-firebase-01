@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
-import { ServiceService } from '../../service.service';
+import { FirebaseService } from '../../firebase.service';
 import { RoleType } from '../../RoleType';
 import { UserType } from '../../UserType';
 
@@ -9,24 +9,24 @@ import { UserType } from '../../UserType';
   selector: 'app-adduser',
   templateUrl: './adduser.component.html',
   styleUrls: ['./adduser.component.css'],
-  providers: [ServiceService]
+  providers: [FirebaseService]
 })
 export class AdduserComponent implements OnInit {
-  myusers: UserType[];
-  myroles: RoleType[];
+  addusers: UserType[];
+  addroles: RoleType[];
   
   appState:string;
   activeKey: string;
 
-  constructor(private _serviceService: ServiceService) { }
+  constructor(private _af: FirebaseService) { }
 
   ngOnInit() {
-    this._serviceService.getUsers().subscribe( myusers => {
-      this.myusers = myusers;
+    this._af.getUsers().subscribe( addusers => {
+      this.addusers = addusers;
     });
 
-    this._serviceService.getRoles().subscribe( myroles => {
-      this.myroles = myroles;
+    this._af.getRoles().subscribe( addroles => {
+      this.addroles = addroles;
     });
    
   }
@@ -56,7 +56,7 @@ export class AdduserComponent implements OnInit {
           postcode:postcode }
 
           
-          this._serviceService.addUser(newUser);
+          this._af.addUser(newUser);
           this.changeState('default','');
    }
 
